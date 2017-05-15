@@ -1,0 +1,162 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F383ECAE-BE45-4325-896D-69AFD3173379}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WolfAndHares.Controls</RootNamespace>
+    <AssemblyName>WolfAndHares.Controls</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AboutScreen.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AboutScreen.Designer.cs">
+      <DependentUpon>AboutScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseWolfAndHaresControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FullWinScreen.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FullWinScreen.Designer.cs">
+      <DependentUpon>FullWinScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InstructionScreen.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="InstructionScreen.Designer.cs">
+      <DependentUpon>InstructionScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LoseScreen.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LoseScreen.Designer.cs">
+      <DependentUpon>LoseScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MenuPause.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MenuPause.Designer.cs">
+      <DependentUpon>MenuPause.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="WinScreen.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="WinScreen.Designer.cs">
+      <DependentUpon>WinScreen.cs</DependentUpon>
+    </Compile>
+    <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="AboutScreen.resx">
+      <DependentUpon>AboutScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FullWinScreen.resx">
+      <DependentUpon>FullWinScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InstructionScreen.resx">
+      <DependentUpon>InstructionScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoseScreen.resx">
+      <DependentUpon>LoseScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MenuPause.resx">
+      <DependentUpon>MenuPause.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinScreen.resx">
+      <DependentUpon>WinScreen.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Contents\about.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Contents\contine_pause.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Contents\contine_win.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Contents\full_win.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Contents\instuction.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Contents\mini_button.png" />
+    <Content Include="Contents\restart_win.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Contents\win_window.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="Resources\HangyabolyFont.bmp" />
+    <Content Include="Contents\lose_window.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Contents\menu_pause.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Contents\menu_win.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Contents\pause_window.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WolfAndHares", "WolfAndHares\WolfAndHares.csproj", "{7CF25B2A-328E-4065-AE28-319C7F1D430B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WolfAndHares.BL", "WolfAndHares.BL\WolfAndHares.BL.csproj", "{9E6AF645-EF50-472D-A8EA-4CACE21BFDF9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WolfAndHares.Controls", "WolfAndHares.Controls\WolfAndHares.Controls.csproj", "{F383ECAE-BE45-4325-896D-69AFD3173379}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7CF25B2A-328E-4065-AE28-319C7F1D430B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7CF25B2A-328E-4065-AE28-319C7F1D430B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7CF25B2A-328E-4065-AE28-319C7F1D430B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7CF25B2A-328E-4065-AE28-319C7F1D430B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E6AF645-EF50-472D-A8EA-4CACE21BFDF9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E6AF645-EF50-472D-A8EA-4CACE21BFDF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E6AF645-EF50-472D-A8EA-4CACE21BFDF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E6AF645-EF50-472D-A8EA-4CACE21BFDF9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F383ECAE-BE45-4325-896D-69AFD3173379}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F383ECAE-BE45-4325-896D-69AFD3173379}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F383ECAE-BE45-4325-896D-69AFD3173379}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F383ECAE-BE45-4325-896D-69AFD3173379}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
