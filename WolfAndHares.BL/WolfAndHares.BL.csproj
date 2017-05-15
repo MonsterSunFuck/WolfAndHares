@@ -55,10 +55,6 @@
     <Compile Include="GameObjects\Stump.cs" />
     <Compile Include="GameObjects\Trap.cs" />
     <Compile Include="GameObjects\Wolf.cs" />
-    <Compile Include="IGameLogic.cs" />
-    <Compile Include="ILevel.cs" />
-    <Compile Include="ILevelLoader.cs" />
-    <Compile Include="ILevelState.cs" />
     <Compile Include="Level.cs" />
     <Compile Include="LevelState.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

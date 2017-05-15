@@ -10,7 +10,7 @@
 
     public partial class MainForm : Form
     {
-        private readonly IGameLogic _gameLogic;
+        private readonly GameLogic _gameLogic;
         private readonly PictureBox[,] _gameCells;
         private readonly List<Button> _levelButtons;
         private Font _hangyaboly;
@@ -96,7 +96,7 @@
             _levelButtons[0].Enabled = true;
         }
 
-        private void InitLevelsPanel(IReadOnlyCollection<ILevel> levels)
+        private void InitLevelsPanel(IReadOnlyCollection<Level> levels)
         {
             if (_levelButtons.Any())
                 return;
@@ -152,7 +152,7 @@
             _gameLogic.StartLevel(_gameLogic.GetCurrentLevelNumber() + 1);
         }
 
-        private void RenderGameLevelState(ILevelState levelState)
+        private void RenderGameLevelState(LevelState levelState)
         {
             pnlMain.Visible = pnlLevels.Visible = false;
 

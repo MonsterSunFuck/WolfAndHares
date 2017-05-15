@@ -2,14 +2,14 @@
 {
     using GameObjects;
 
-    public class Level : ILevel
+    public class Level
     {
         public Level(int height, int withd)
         {
             GameObjects = new GameObject[height, withd];
         }
 
-        public ILevel InitialState { get; set; }
+        public Level InitialState { get; set; }
         public GameObject[,] GameObjects { get; set; }
 
         public int AllCarrotsCount { get; set; }
@@ -21,7 +21,7 @@
             {
                 for (var j = 0; j < GameObjects.GetLength(1); j++)
                 {
-                    GameObjects[i, j] = (GameObject)InitialState.GameObjects[i, j].Clone();
+                    GameObjects[i, j] = InitialState.GameObjects[i, j].CloneGameObject();
                 }
             }
             AllCarrotsCount = InitialState.AllCarrotsCount;

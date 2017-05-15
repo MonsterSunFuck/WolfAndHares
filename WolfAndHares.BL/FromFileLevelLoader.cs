@@ -6,12 +6,12 @@
     using System.IO;
     using System.Linq;
 
-    public class FromFileLevelLoader : ILevelLoader
+    public class FromFileLevelLoader
     {
         private const string SaveFilePath = "Saves/save";
-        public List<ILevel> LoadLevels()
+        public List<Level> LoadLevels()
         {
-            var levels = new List<ILevel>();
+            var levels = new List<Level>();
 
             var fileNames =
                 new DirectoryInfo(@"Levels").GetFileSystemInfos("*.level")
@@ -36,7 +36,7 @@
 
                 level.AllCarrotsCount = level.GameObjects.Cast<GameObject>().Count(x => x is Carrot);
                 level.AllRabbitsCount = level.GameObjects.Cast<GameObject>().Count(x => x is Hare);
-                level.InitialState = (ILevel)level.Clone();
+                level.InitialState = (Level)level.Clone();
                 levels.Add(level);
             }
 

@@ -6,12 +6,12 @@
     using System.Drawing;
     using System.Linq;
 
-    public class GameLogic : IGameLogic
+    public class GameLogic
     {
-        private List<ILevel> _levels;
-        private readonly ILevelLoader _levelLoader;
-        private ILevel _currentLevel;
-        private ILevelState _levelState;
+        private List<Level> _levels;
+        private readonly FromFileLevelLoader _levelLoader;
+        private Level _currentLevel;
+        private LevelState _levelState;
         private Point _currentWolfPosition;
         private Point _newWolfPosition;
         private bool _isPause;
@@ -64,7 +64,7 @@
             Play();
         }
 
-        public ILevelState GetLevelState()
+        public LevelState GetLevelState()
         {
             return _levelState;
         }
@@ -259,7 +259,7 @@
                 });
         }
 
-        public List<ILevel> GetLevels()
+        public List<Level> GetLevels()
         {
             return _levels;
         }

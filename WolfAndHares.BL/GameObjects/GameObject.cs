@@ -10,5 +10,10 @@
         {
             return MemberwiseClone();
         }
+
+        public GameObject CloneGameObject()
+        {
+            return (GameObject)Clone();
+        }
     }
 }
