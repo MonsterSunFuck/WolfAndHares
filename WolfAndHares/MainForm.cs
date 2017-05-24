@@ -306,14 +306,21 @@
 
         private void ContinueClick(object sender, EventArgs e)
         {
-            var levelState = _gameLogic.GetLevelState();
+            ShowSelectLevel();
+            /*var levelState = _gameLogic.GetLevelState();
 
             if (levelState != null && levelState.IsWin())
             {
                 _gameLogic.StartLevel(_gameLogic.GetCurrentLevelNumber() + 1);
             }
 
-            ResumeGame();
+            ResumeGame();*/
+        }
+
+        private void ShowSelectLevel()
+        {
+            pnlMain.Visible = btnContinue.Visible = false;
+            pnlLevels.Visible = true;
         }
 
         private void RestartClick(object sender, EventArgs e)
