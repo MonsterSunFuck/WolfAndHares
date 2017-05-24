@@ -40,8 +40,8 @@
             this.lblAbout.Name = "lblAbout";
             this.lblAbout.Size = new System.Drawing.Size(327, 231);
             this.lblAbout.TabIndex = 0;
-            this.lblAbout.Text = "Игра \"Волк и Зайцы\" является курсовым проектом студентки группы ППр-13-1 Петровой" +
-    " Натальи\r\n(с) 2017\r\n";
+            this.lblAbout.Text = "Игра \"Волк и Зайцы\" - выпускная квалификационная работа студентки группы ППр-13-1" +
+    " Петровой Натальи\r\n(с) 2017\r\n";
             this.lblAbout.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnOk
