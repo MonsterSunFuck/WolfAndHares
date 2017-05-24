@@ -6,9 +6,21 @@
     {
         public Wolf()
         {
-            Image = new Bitmap("Content/field/wolf.png");
+            PickUpCarrot();
         }
 
-        public override Image Image { get; }
+        private Image _image;
+
+        public override Image Image => _image;
+
+        public void GiveCarrot()
+        {
+            _image = new Bitmap("Content/field/wolf_with_carrot.png");
+        }
+
+        public void PickUpCarrot()
+        {
+            _image = new Bitmap("Content/field/wolf.png");
+        }
     }
 }

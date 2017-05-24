@@ -103,11 +103,21 @@
             MoveRabbits();
         }
 
+        private Wolf Wolf => _currentLevel.GameObjects[_currentWolfPosition.X, _currentWolfPosition.Y] as Wolf;
+
         private void MoveWolf()
         {
             _currentLevel.GameObjects[_newWolfPosition.X, _newWolfPosition.Y] = _currentLevel.GameObjects[_currentWolfPosition.X, _currentWolfPosition.Y];
             _currentLevel.GameObjects[_currentWolfPosition.X, _currentWolfPosition.Y] = new Glade();
             _currentWolfPosition = _newWolfPosition;
+            if (_levelState.Carrots > 0)
+            {
+                Wolf.GiveCarrot();
+            }
+            else
+            {
+                Wolf.PickUpCarrot();
+            }
         }
 
         private bool IsWolfCannotMove()
