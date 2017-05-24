@@ -13,7 +13,7 @@
         public GameObject[,] GameObjects { get; set; }
 
         public int AllCarrotsCount { get; set; }
-        public int AllRabbitsCount { get; set; }
+        public int AllHaresCount { get; set; }
         public void SetToInitialState()
         {
             GameObjects = new GameObject[GameObjects.GetLength(0), GameObjects.GetLength(1)];
@@ -25,7 +25,7 @@
                 }
             }
             AllCarrotsCount = InitialState.AllCarrotsCount;
-            AllRabbitsCount = InitialState.AllRabbitsCount;
+            AllHaresCount = InitialState.AllHaresCount;
         }
 
         public object Clone()

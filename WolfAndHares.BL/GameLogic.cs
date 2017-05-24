@@ -36,8 +36,8 @@
                 Level = _currentLevel,
                 Lives = 10,
                 Carrots = 0,
-                Rabbits = 0,
-                AllRabbitsCount = _currentLevel.AllRabbitsCount,
+                Hares = 0,
+                AllHaresCount = _currentLevel.AllHaresCount,
                 AllCarrotsCount = _currentLevel.AllCarrotsCount
             };
         }
@@ -100,14 +100,15 @@
 
             CalculateStats();
             MoveWolf();
-            MoveRabbits();
+            MoveHares();
+            MoveFox();
         }
 
         private Wolf Wolf => _currentLevel.GameObjects[_currentWolfPosition.X, _currentWolfPosition.Y] as Wolf;
 
         private void MoveWolf()
         {
-            _currentLevel.GameObjects[_newWolfPosition.X, _newWolfPosition.Y] = _currentLevel.GameObjects[_currentWolfPosition.X, _currentWolfPosition.Y];
+            _currentLevel.GameObjects[_newWolfPosition.X, _newWolfPosition.Y] = Wolf;
             _currentLevel.GameObjects[_currentWolfPosition.X, _currentWolfPosition.Y] = new Glade();
             _currentWolfPosition = _newWolfPosition;
             if (_levelState.Carrots > 0)
@@ -122,7 +123,7 @@
 
         private bool IsWolfCannotMove()
         {
-            return _levelState.Lives < 1 || _levelState.Rabbits == _currentLevel.AllRabbitsCount ||
+            return _levelState.Lives < 1 || _levelState.Hares == _currentLevel.AllHaresCount ||
                    _currentLevel.GameObjects[_newWolfPosition.X, _newWolfPosition.Y] is Stump;
         }
 
@@ -132,7 +133,7 @@
                 _levelState.Carrots++;
             if (IsGameObjectOnTheWay<Hare>())
             {
-                _levelState.Rabbits++;
+                _levelState.Hares++;
                 _levelState.Lives += 10;
                 _levelState.Carrots--;
             }
@@ -149,59 +150,59 @@
             return _currentLevel.GameObjects[_newWolfPosition.X, _newWolfPosition.Y].GetType() == typeof(T);
         }
 
-        private void MoveRabbits()
+        private void MoveHares()
         {
             if (_levelState.Carrots > 0)
                 return;
-            Point rabbitPosition;
-            if (IsRabbinOnUp(out rabbitPosition))
+            Point harePosition;
+            if (IsHareOnUp(out harePosition))
             {
-                JumpRabbit(rabbitPosition);
+                JumpHare(harePosition);
             }
 
-            if (IsRabbinOnRight(out rabbitPosition))
+            if (IsHareOnRight(out harePosition))
             {
-                JumpRabbit(rabbitPosition);
+                JumpHare(harePosition);
             }
 
-            if (IsRabbinOnDown(out rabbitPosition))
+            if (IsHareOnDown(out harePosition))
             {
-                JumpRabbit(rabbitPosition);
+                JumpHare(harePosition);
             }
 
-            if (IsRabbinOnLeft(out rabbitPosition))
+            if (IsHareOnLeft(out harePosition))
             {
-                JumpRabbit(rabbitPosition);
+                JumpHare(harePosition);
             }
         }
 
-        private bool IsRabbinOnUp(out Point rabbitPosition)
+        private bool IsHareOnUp(out Point harePosition)
         {
-            rabbitPosition = new Point(_currentWolfPosition.X - 1, _currentWolfPosition.Y);
-            return CheckRabbit(rabbitPosition);
+            harePosition = new Point(_currentWolfPosition.X - 1, _currentWolfPosition.Y);
+            return CheckHare(harePosition);
         }
 
-        private bool IsRabbinOnRight(out Point rabbitPosition)
+        private bool IsHareOnRight(out Point harePosition)
         {
-            rabbitPosition = new Point(_currentWolfPosition.X, _currentWolfPosition.Y + 1);
-            return CheckRabbit(rabbitPosition);
+            harePosition = new Point(_currentWolfPosition.X, _currentWolfPosition.Y + 1);
+            return CheckHare(harePosition);
         }
 
-        private bool IsRabbinOnDown(out Point rabbitPosition)
+        private bool IsHareOnDown(out Point harePosition)
         {
-            rabbitPosition = new Point(_currentWolfPosition.X + 1, _currentWolfPosition.Y);
-            return CheckRabbit(rabbitPosition);
+            harePosition = new Point(_currentWolfPosition.X + 1, _currentWolfPosition.Y);
+            return CheckHare(harePosition);
         }
 
-        private bool IsRabbinOnLeft(out Point rabbitPosition)
+        private bool IsHareOnLeft(out Point harePosition)
         {
-            rabbitPosition = new Point(_currentWolfPosition.X, _currentWolfPosition.Y - 1);
-            return CheckRabbit(rabbitPosition);
+            harePosition = new Point(_currentWolfPosition.X, _currentWolfPosition.Y - 1);
+            return CheckHare(harePosition);
         }
 
-        private bool CheckRabbit(Point rabbitPosition)
+        private bool CheckHare(Point harePosition)
         {
-            return IsInArea(rabbitPosition) && _currentLevel.GameObjects[rabbitPosition.X, rabbitPosition.Y] is Hare;
+            return IsInArea(harePosition) && _currentLevel.GameObjects[harePosition.X, harePosition.Y] is Hare;
         }
 
         private bool IsInArea(Point point)
@@ -210,29 +211,34 @@
                    point.Y < _currentLevel.GameObjects.GetLength(1);
         }
 
-        private void JumpRabbit(Point rabbitPostion)
+        private void JumpHare(Point harePostion)
         {
-            var availableJumps = GetAvailableJumps(rabbitPostion);
+            var availableJumps = GetAvailableJumps(harePostion);
             if (availableJumps.Count == 0)
                 return;
 
             var rnd = new Random();
             var position = rnd.Next(0, availableJumps.Count);
-            var newRabbitPostion = availableJumps[position];
+            var newHarePostion = availableJumps[position];
 
-            _currentLevel.GameObjects[newRabbitPostion.X, newRabbitPostion.Y] = _currentLevel.GameObjects[rabbitPostion.X, rabbitPostion.Y];
-            _currentLevel.GameObjects[rabbitPostion.X, rabbitPostion.Y] = new Glade();
+            _currentLevel.GameObjects[newHarePostion.X, newHarePostion.Y] = _currentLevel.GameObjects[harePostion.X, harePostion.Y];
+            _currentLevel.GameObjects[harePostion.X, harePostion.Y] = new Glade();
         }
 
-        private List<Point> GetAvailableJumps(Point rabbitPostion)
+        private List<Point> GetAvailableJumps(Point harePostion)
         {
             return new List<Point>
             {
-                new Point(rabbitPostion.X + 1, rabbitPostion.Y),
-                new Point(rabbitPostion.X - 1, rabbitPostion.Y),
-                new Point(rabbitPostion.X, rabbitPostion.Y + 1),
-                new Point(rabbitPostion.X, rabbitPostion.Y - 1)
+                new Point(harePostion.X + 1, harePostion.Y),
+                new Point(harePostion.X - 1, harePostion.Y),
+                new Point(harePostion.X, harePostion.Y + 1),
+                new Point(harePostion.X, harePostion.Y - 1)
             }.Where(point => IsInArea(point) && _currentLevel.GameObjects[point.X, point.Y] is Glade).ToList();
+        }
+
+        private void MoveFox()
+        {
+
         }
 
         public void GoUp()

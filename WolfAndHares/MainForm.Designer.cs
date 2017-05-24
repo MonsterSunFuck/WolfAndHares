@@ -1,5 +1,7 @@
 ﻿namespace WolfAndHares
 {
+    using System.Windows.Forms;
+
     partial class MainForm
     {
         /// <summary>
@@ -324,6 +326,7 @@
             this.Controls.Add(this.pnlMain);
             this.Controls.Add(this.pnlLevels);
             this.Controls.Add(this.pnlGame);
+            //            this.Cursor = new Cursor("Content/menu/cursor.cur");
             this.KeyPreview = true;
             this.MaximumSize = new System.Drawing.Size(500, 600);
             this.MinimumSize = new System.Drawing.Size(500, 600);

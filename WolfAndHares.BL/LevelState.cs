@@ -6,12 +6,12 @@
         public int GetPoints() => Lives * 100 + Carrots * 40;
         public Level Level { get; set; }
         public int AllCarrotsCount { get; set; }
-        public int AllRabbitsCount { get; set; }
+        public int AllHaresCount { get; set; }
         public int Carrots { get; set; }
-        public int Rabbits { get; set; }
+        public int Hares { get; set; }
         public bool IsWin()
         {
-            return Rabbits == AllRabbitsCount;
+            return Hares == AllHaresCount;
         }
 
         public bool IsLoose() => Lives < 1;

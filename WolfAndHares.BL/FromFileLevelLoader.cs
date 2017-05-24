@@ -35,7 +35,7 @@
                 }
 
                 level.AllCarrotsCount = level.GameObjects.Cast<GameObject>().Count(x => x is Carrot);
-                level.AllRabbitsCount = level.GameObjects.Cast<GameObject>().Count(x => x is Hare);
+                level.AllHaresCount = level.GameObjects.Cast<GameObject>().Count(x => x is Hare);
                 level.InitialState = (Level)level.Clone();
                 levels.Add(level);
             }
@@ -91,6 +91,8 @@
                     return new Stump();
                 case 't':
                     return new Trap();
+                case 'f':
+                    return new Fox();
                 default:
                     return new Glade();
             }

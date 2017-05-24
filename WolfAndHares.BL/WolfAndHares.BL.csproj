@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="FromFileLevelLoader.cs" />
     <Compile Include="GameLogic.cs" />
+    <Compile Include="GameObjects\Fox.cs" />
     <Compile Include="GameObjects\GameObject.cs" />
     <Compile Include="GameObjects\Carrot.cs" />
     <Compile Include="GameObjects\Glade.cs" />

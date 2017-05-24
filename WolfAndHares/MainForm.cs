@@ -104,7 +104,7 @@
             var savedState = _gameLogic.GetSavedState();
             var backgroundImage = new Bitmap("Content/levels/button.png");
 
-            var x = 4;
+            const int x = 5;
             var y = levels.Count / x;
             var countLevel = 1;
             for (var i = 1; i <= y; i++)
@@ -124,7 +124,7 @@
                             MouseOverBackColor = Color.Transparent
                         },
                         Cursor = Cursors.Hand,
-                        Location = new Point(j * 72 + 32, i * 72 + 54),
+                        Location = new Point(j * 72 - 3, i * 72 + 50),
                         ForeColor = Color.White,
                         BackColor = Color.Transparent,
                         UseVisualStyleBackColor = false,
