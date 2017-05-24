@@ -30,8 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.pnlMain = new System.Windows.Forms.Panel();
-            this.aboutScreen = new WolfAndHares.Controls.AboutScreen();
-            this.instructionScreen = new WolfAndHares.Controls.InstructionScreen();
             this.btnContinue = new System.Windows.Forms.Button();
             this.btnNewGame = new System.Windows.Forms.Button();
             this.btnHowToPlay = new System.Windows.Forms.Button();
@@ -40,11 +38,13 @@
             this.pnlLevels = new System.Windows.Forms.Panel();
             this.pbxMainMenu = new System.Windows.Forms.PictureBox();
             this.pnlGame = new System.Windows.Forms.Panel();
-            this.winScreen = new WolfAndHares.Controls.WinScreen();
-            this.fullWinScreen = new WolfAndHares.Controls.FullWinScreen();
             this.imgPause = new System.Windows.Forms.PictureBox();
             this.lblLiveCount = new System.Windows.Forms.Label();
             this.lblCarrotCount = new System.Windows.Forms.Label();
+            this.aboutScreen = new WolfAndHares.Controls.AboutScreen();
+            this.instructionScreen = new WolfAndHares.Controls.InstructionScreen();
+            this.winScreen = new WolfAndHares.Controls.WinScreen();
+            this.fullWinScreen = new WolfAndHares.Controls.FullWinScreen();
             this.menuPause = new WolfAndHares.Controls.MenuPause();
             this.looseScreen = new WolfAndHares.Controls.LoseScreen();
             this.pnlMain.SuspendLayout();
@@ -69,27 +69,6 @@
             this.pnlMain.Name = "pnlMain";
             this.pnlMain.Size = new System.Drawing.Size(484, 480);
             this.pnlMain.TabIndex = 0;
-            // 
-            // aboutScreen
-            // 
-            this.aboutScreen.BackColor = System.Drawing.Color.Transparent;
-            this.aboutScreen.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("aboutScreen.BackgroundImage")));
-            this.aboutScreen.ForeColor = System.Drawing.Color.White;
-            this.aboutScreen.Location = new System.Drawing.Point(26, 57);
-            this.aboutScreen.Name = "aboutScreen";
-            this.aboutScreen.Size = new System.Drawing.Size(427, 415);
-            this.aboutScreen.TabIndex = 8;
-            this.aboutScreen.Visible = false;
-            // 
-            // instructionScreen
-            // 
-            this.instructionScreen.BackColor = System.Drawing.Color.Transparent;
-            this.instructionScreen.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("instructionScreen.BackgroundImage")));
-            this.instructionScreen.Location = new System.Drawing.Point(24, 55);
-            this.instructionScreen.Name = "instructionScreen";
-            this.instructionScreen.Size = new System.Drawing.Size(427, 415);
-            this.instructionScreen.TabIndex = 9;
-            this.instructionScreen.Visible = false;
             // 
             // btnContinue
             // 
@@ -228,32 +207,6 @@
             this.pnlGame.TabIndex = 2;
             this.pnlGame.Visible = false;
             // 
-            // winScreen
-            // 
-            this.winScreen.BackColor = System.Drawing.Color.Transparent;
-            this.winScreen.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("winScreen.BackgroundImage")));
-            this.winScreen.ForeColor = System.Drawing.Color.White;
-            this.winScreen.Location = new System.Drawing.Point(65, 100);
-            this.winScreen.Name = "winScreen";
-            this.winScreen.Size = new System.Drawing.Size(357, 426);
-            this.winScreen.TabIndex = 10;
-            this.winScreen.Visible = false;
-            this.winScreen.ContinueClick += new System.EventHandler(this.ContinueClick);
-            this.winScreen.SelectLevelClick += new System.EventHandler(this.SelectLevelClick);
-            this.winScreen.MainMenuClick += new System.EventHandler(this.MainMenuClick);
-            this.winScreen.RestartClick += new System.EventHandler(this.RestartClick);
-            // 
-            // fullWinScreen
-            // 
-            this.fullWinScreen.BackColor = System.Drawing.Color.Transparent;
-            this.fullWinScreen.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("fullWinScreen.BackgroundImage")));
-            this.fullWinScreen.Location = new System.Drawing.Point(65, 99);
-            this.fullWinScreen.Name = "fullWinScreen";
-            this.fullWinScreen.Size = new System.Drawing.Size(357, 381);
-            this.fullWinScreen.TabIndex = 11;
-            this.fullWinScreen.Visible = false;
-            this.fullWinScreen.MainMenuClick += new System.EventHandler(this.MainMenuClick);
-            // 
             // imgPause
             // 
             this.imgPause.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -289,6 +242,53 @@
             this.lblCarrotCount.TabIndex = 4;
             this.lblCarrotCount.Text = "0";
             this.lblCarrotCount.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // aboutScreen
+            // 
+            this.aboutScreen.BackColor = System.Drawing.Color.Transparent;
+            this.aboutScreen.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("aboutScreen.BackgroundImage")));
+            this.aboutScreen.ForeColor = System.Drawing.Color.White;
+            this.aboutScreen.Location = new System.Drawing.Point(26, 57);
+            this.aboutScreen.Name = "aboutScreen";
+            this.aboutScreen.Size = new System.Drawing.Size(427, 415);
+            this.aboutScreen.TabIndex = 8;
+            this.aboutScreen.Visible = false;
+            // 
+            // instructionScreen
+            // 
+            this.instructionScreen.BackColor = System.Drawing.Color.Transparent;
+            this.instructionScreen.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("instructionScreen.BackgroundImage")));
+            this.instructionScreen.Location = new System.Drawing.Point(24, 55);
+            this.instructionScreen.Name = "instructionScreen";
+            this.instructionScreen.Size = new System.Drawing.Size(427, 415);
+            this.instructionScreen.TabIndex = 9;
+            this.instructionScreen.Visible = false;
+            // 
+            // winScreen
+            // 
+            this.winScreen.BackColor = System.Drawing.Color.Transparent;
+            this.winScreen.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("winScreen.BackgroundImage")));
+            this.winScreen.ForeColor = System.Drawing.Color.White;
+            this.winScreen.Location = new System.Drawing.Point(65, 100);
+            this.winScreen.Name = "winScreen";
+            this.winScreen.Size = new System.Drawing.Size(357, 426);
+            this.winScreen.TabIndex = 10;
+            this.winScreen.Visible = false;
+            this.winScreen.ContinueClick += new System.EventHandler(this.ContinueClick);
+            this.winScreen.SelectLevelClick += new System.EventHandler(this.SelectLevelClick);
+            this.winScreen.MainMenuClick += new System.EventHandler(this.MainMenuClick);
+            this.winScreen.RestartClick += new System.EventHandler(this.RestartClick);
+            // 
+            // fullWinScreen
+            // 
+            this.fullWinScreen.BackColor = System.Drawing.Color.Transparent;
+            this.fullWinScreen.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("fullWinScreen.BackgroundImage")));
+            this.fullWinScreen.Location = new System.Drawing.Point(65, 99);
+            this.fullWinScreen.Name = "fullWinScreen";
+            this.fullWinScreen.Size = new System.Drawing.Size(357, 381);
+            this.fullWinScreen.TabIndex = 11;
+            this.fullWinScreen.Visible = false;
+            this.fullWinScreen.MainMenuClick += new System.EventHandler(this.MainMenuClick);
             // 
             // menuPause
             // 

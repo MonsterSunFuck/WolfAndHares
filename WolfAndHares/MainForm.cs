@@ -36,7 +36,7 @@
 
             pnlMain.Dock = DockStyle.Fill;
             pnlLevels.Dock = DockStyle.Fill;
-            _gameCells = new PictureBox[4, 5];
+            _gameCells = new PictureBox[5, 5];
             _levelButtons = new List<Button>();
             _gameLogic = new GameLogic();
             InitGameCells();
@@ -71,7 +71,7 @@
                     var gameCell = new PictureBox
                     {
                         Size = new Size(64, 64),
-                        Location = new Point(124 + 62 * i, 144 + 62 * j),
+                        Location = new Point(92 + 62 * i, 146 + 62 * j),
                         SizeMode = PictureBoxSizeMode.CenterImage,
                     };
 

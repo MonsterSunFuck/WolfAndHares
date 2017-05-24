@@ -24,7 +24,7 @@
             foreach (var path in fileNames)
             {
                 var fileLines = File.ReadAllLines(path);
-                var level = new Level(5, 4);
+                var level = new Level(5, 5);
                 for (var i = 0; i < fileLines.Length; i++)
                 {
                     var fileLine = fileLines[i];
