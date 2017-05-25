@@ -3,6 +3,7 @@
     public class LevelState
     {
         public int Lives { get; set; }
+        public bool WolfIsLose { get; set; }
         public int GetPoints() => Lives * 100 + Carrots * 40;
         public Level Level { get; set; }
         public int AllCarrotsCount { get; set; }
@@ -14,6 +15,6 @@
             return Hares == AllHaresCount;
         }
 
-        public bool IsLoose() => Lives < 1;
+        public bool IsLoose() => Lives < 1 || WolfIsLose;
     }
 }

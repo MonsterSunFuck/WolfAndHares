@@ -231,22 +231,95 @@
             _currentLevel.GameObjects[harePostion.X, harePostion.Y] = new Glade();
         }
 
-        private List<Point> GetAvailableJumps(Point harePostion)
+        private List<Point> GetAvailableJumps(Point currentPosition, params Type[] typeGameObjects)
         {
+            typeGameObjects = typeGameObjects.Concat(new[] { typeof(Glade) }).ToArray();
+
             return new List<Point>
             {
-                new Point(harePostion.X + 1, harePostion.Y),
-                new Point(harePostion.X - 1, harePostion.Y),
-                new Point(harePostion.X, harePostion.Y + 1),
-                new Point(harePostion.X, harePostion.Y - 1)
-            }.Where(point => IsInArea(point) && _currentLevel.GameObjects[point.X, point.Y] is Glade).ToList();
+                new Point(currentPosition.X + 1, currentPosition.Y),
+                new Point(currentPosition.X - 1, currentPosition.Y),
+                new Point(currentPosition.X, currentPosition.Y + 1),
+                new Point(currentPosition.X, currentPosition.Y - 1)
+            }.Where(point => IsInArea(point) && typeGameObjects.Contains(_currentLevel.GameObjects[point.X, point.Y].GetType())).ToList();
         }
 
         private void MoveFox()
         {
             if (Fox == null)
                 return;
+            JumpFox();
+        }
 
+        private void JumpFox()
+        {
+            var availableJumps = GetAvailableJumps(_currentFoxPosition, typeof(Hare));
+            if (availableJumps.Count == 0)
+                return;
+
+            availableJumps = GetPrioritetFoxJumps(availableJumps);
+
+            var rnd = new Random();
+            var position = rnd.Next(0, availableJumps.Count);
+            var newFoxPostion = availableJumps[position];
+
+            if (_currentLevel.GameObjects[newFoxPostion.X, newFoxPostion.Y] is Hare)
+            {
+                _levelState.WolfIsLose = true;
+            }
+
+            _currentLevel.GameObjects[newFoxPostion.X, newFoxPostion.Y] = Fox;
+            _currentLevel.GameObjects[_currentFoxPosition.X, _currentFoxPosition.Y] = new Glade();
+            _currentFoxPosition = newFoxPostion;
+        }
+
+        private List<Point> GetPrioritetFoxJumps(List<Point> jumps)
+        {
+            var newJumps = new List<Point>();
+
+            var minimumDirection = double.MaxValue;
+
+            foreach (var jump in jumps)
+            {
+                Point? newJump = null;
+
+                for (var i = 0; i < _currentLevel.GameObjects.GetLength(0); i++)
+                {
+                    if (_currentLevel.GameObjects[jump.X, i] is Hare)
+                    {
+                        var direction = Math.Sqrt(Math.Pow(jump.Y - i, 2));
+                        if (direction < minimumDirection)
+                        {
+                            minimumDirection = direction;
+                            newJump = jump;
+                        }
+
+                        break;
+                    }
+                }
+
+                if (newJump == null)
+                {
+                    for (var i = 0; i < _currentLevel.GameObjects.GetLength(1); i++)
+                    {
+                        if (_currentLevel.GameObjects[i, jump.Y] is Hare)
+                        {
+                            var direction = Math.Sqrt(Math.Pow(jump.X - i, 2));
+                            if (direction < minimumDirection)
+                            {
+                                minimumDirection = direction;
+                                newJump = jump;
+                            }
+                            break;
+                        }
+                    }
+                }
+
+                if (newJump.HasValue)
+                    newJumps.Add(newJump.Value);
+            }
+
+            return newJumps.Any() ? newJumps : jumps;
         }
 
         public void GoUp()
