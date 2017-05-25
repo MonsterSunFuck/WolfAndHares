@@ -90,7 +90,7 @@
             this.btnContinue.Text = "Продолжить";
             this.btnContinue.UseVisualStyleBackColor = false;
             this.btnContinue.Visible = false;
-            this.btnContinue.Click += new System.EventHandler(this.ContinueClick);
+            this.btnContinue.Click += new System.EventHandler(this.ShowSelectLevel);
             // 
             // btnNewGame
             // 

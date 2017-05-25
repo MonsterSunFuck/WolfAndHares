@@ -40,8 +40,7 @@
             _levelButtons = new List<Button>();
             _gameLogic = new GameLogic();
             InitGameCells();
-            if (_gameLogic.GetSavedState().SavedLevelStates.Any() && _gameLogic.LoadGame())
-                btnContinue.Visible = true;
+            btnContinue.Visible = _gameLogic.LoadGame();
             InitLevelsPanel(_gameLogic.GetLevels());
         }
 
@@ -306,18 +305,17 @@
 
         private void ContinueClick(object sender, EventArgs e)
         {
-            ShowSelectLevel();
-            /*var levelState = _gameLogic.GetLevelState();
+            var levelState = _gameLogic.GetLevelState();
 
             if (levelState != null && levelState.IsWin())
             {
                 _gameLogic.StartLevel(_gameLogic.GetCurrentLevelNumber() + 1);
             }
 
-            ResumeGame();*/
+            ResumeGame();
         }
 
-        private void ShowSelectLevel()
+        private void ShowSelectLevel(object sender, EventArgs e)
         {
             pnlMain.Visible = btnContinue.Visible = false;
             pnlLevels.Visible = true;

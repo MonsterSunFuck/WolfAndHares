@@ -13,6 +13,7 @@
         private Level _currentLevel;
         private LevelState _levelState;
         private Point _currentWolfPosition;
+        private Point _currentFoxPosition;
         private Point _newWolfPosition;
         private bool _isPause;
 
@@ -44,10 +45,11 @@
 
         public void StartLevel(int number)
         {
-            if (number > 16)
+            if (number > _levels.Count)
             {
-                number = 16;
+                number = _levels.Count;
             }
+
             _currentLevel = _levels[number - 1];
             _currentLevel.SetToInitialState();
             InitLevelState();
@@ -58,6 +60,8 @@
                 {
                     if (_currentLevel.GameObjects[i, j] is Wolf)
                         _currentWolfPosition = new Point(i, j);
+                    if (_currentLevel.GameObjects[i, j] is Fox)
+                        _currentFoxPosition = new Point(i, j);
                 }
             }
 
@@ -105,6 +109,8 @@
         }
 
         private Wolf Wolf => _currentLevel.GameObjects[_currentWolfPosition.X, _currentWolfPosition.Y] as Wolf;
+
+        private Fox Fox => _currentLevel.GameObjects[_currentFoxPosition.X, _currentFoxPosition.Y] as Fox;
 
         private void MoveWolf()
         {
@@ -238,6 +244,8 @@
 
         private void MoveFox()
         {
+            if (Fox == null)
+                return;
 
         }
 
@@ -322,11 +330,13 @@
 
         public bool LoadGame()
         {
-            _levels = _levelLoader.LoadLevels();
             var savedState = GetSavedState();
-            if (savedState == null)
+            if (savedState == null || !savedState.SavedLevelStates.Any())
                 return false;
-            var levelNumber = savedState.SavedLevelStates.Max(x => x.LevelNumber);
+
+            _levels = _levelLoader.LoadLevels();
+
+            var levelNumber = savedState.SavedLevelStates.Max(x => x.LevelNumber) + 1;
             StartLevel(levelNumber);
             return true;
         }
